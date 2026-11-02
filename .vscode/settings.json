@@ -1,0 +1,6 @@
+{
+  "files.associations": { "*.hdl": "verilog" },
+  "python.analysis.typeCheckingMode": "basic",
+  "editor.rulers": [88],
+  "files.exclude": { "**/__pycache__": true }
+}

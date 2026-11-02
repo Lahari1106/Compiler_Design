@@ -1,0 +1,24 @@
+# Build output
+build/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Generated SVG files
+*.svg
+
+# Virtual environments
+venv/
+.venv/
+
+# Environment variables and secrets
+.env
+
+# Test cache and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+demo_log.txt

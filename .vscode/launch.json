@@ -1,0 +1,97 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Web playground (opens browser)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/server.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "mhdlc: compile current .hdl file (all artefacts)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/mhdlc.py",
+      "args": [
+        "${file}",
+        "--emit",
+        "all",
+        "-O2",
+        "--verify"
+      ],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "justMyCode": false
+    },
+    {
+      "name": "mhdlc: ALU4 demo",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/mhdlc.py",
+      "args": [
+        "examples/alu.hdl",
+        "--top",
+        "ALU4",
+        "--emit",
+        "all",
+        "-O2",
+        "--verify"
+      ],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "mhdlc: analysis suite (QM, STA, faults)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/mhdlc.py",
+      "args": [
+        "examples/adder.hdl",
+        "--top",
+        "FullAdder",
+        "--emit",
+        "boolean,timing,faults"
+      ],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "mhdlc: optimizer showcase",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/mhdlc.py",
+      "args": [
+        "examples/optimize_demo.hdl",
+        "--top",
+        "Redundant",
+        "--emit",
+        "ir,opt,stats,truth",
+        "-O2",
+        "--verify"
+      ],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "mhdlc: diagnostics demo",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/mhdlc.py",
+      "args": [
+        "examples/errors.hdl"
+      ],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "Run regression tests",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/tests/test_suite.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}

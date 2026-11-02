@@ -1,0 +1,42 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compile current .hdl file",
+      "type": "shell",
+      "command": "python3 mhdlc.py ${file} --emit all -O2 --verify",
+      "group": { "kind": "build", "isDefault": true },
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "problemMatcher": {
+        "owner": "minihdl",
+        "fileLocation": ["relative", "${workspaceFolder}/examples"],
+        "pattern": [
+          {
+            "regexp": "^(error|warning)\\s+\\[(\\w+)\\]:\\s+(.*)$",
+            "severity": 1,
+            "message": 3
+          },
+          {
+            "regexp": "^\\s*-->\\s+(.*):(\\d+):(\\d+)$",
+            "file": 1,
+            "line": 2,
+            "column": 3
+          }
+        ]
+      }
+    },
+    {
+      "label": "Run tests",
+      "type": "shell",
+      "command": "python3 tests/test_suite.py",
+      "group": { "kind": "test", "isDefault": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "Render schematic (Graphviz)",
+      "type": "shell",
+      "command": "python3 mhdlc.py ${file} --emit dot -O2 && dot -Tsvg build/*.dot -O",
+      "problemMatcher": []
+    }
+  ]
+}
